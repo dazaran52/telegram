@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Мое мини-приложение</title>
+    <title>Серунчик</title>
 </head>
 <body>
     <h1>Привет, мир!</h1>
-     <button id="sendDataButton">Отправить данные боту</button>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-   <script>
-        const tg = window.Telegram.WebApp;
-        const sendDataButton = document.getElementById("sendDataButton");
-    sendDataButton.addEventListener("click", function() {
-        tg.sendData("Привет от mini app");
-        tg.close();
-    });
+    <button id="startSeriesButton">Начать выращивать серийчика с другом</button>
+    <button id="sendDataButton">Отправить данные боту</button>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+     <script>
+     const tg = window.Telegram.WebApp;
+     const startSeriesButton = document.getElementById("startSeriesButton");
+     const sendDataButton = document.getElementById("sendDataButton");
+     startSeriesButton.addEventListener("click", function() {
+         // Отправляем данные боту, чтобы он создал приглашение
+         tg.sendData(JSON.stringify({action: "start_series",  recipient_id: tg.initDataUnsafe.user.id}));
+         tg.close();
+     });
+       sendDataButton.addEventListener("click", function() {
+         tg.sendData(JSON.stringify({action: "test_data", data: "hello"}));
+         tg.close();
+     });
     </script>
 </body>
 </html>
