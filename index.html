@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мое мини-приложение</title>
+</head>
+<body>
+    <h1>Привет, мир!</h1>
+     <button id="sendDataButton">Отправить данные боту</button>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+   <script>
+        const tg = window.Telegram.WebApp;
+        const sendDataButton = document.getElementById("sendDataButton");
+    sendDataButton.addEventListener("click", function() {
+        tg.sendData("Привет от mini app");
+        tg.close();
+    });
+    </script>
+</body>
+</html>
